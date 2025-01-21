@@ -1,10 +1,8 @@
-import aisuite as ai  # type: ignore
+from litellm import completion
 
 
 def main():
-    client = ai.Client()
-
-    model = "ollama:deepseek-r1:1.5b"
+    model = "ollama/deepseek-r1:1.5b"
 
     content = "Hello, how are you?"
 
@@ -15,7 +13,7 @@ def main():
         },
     ]
 
-    response = client.chat.completions.create(
+    response = completion(
         model=model,
         messages=messages,
     )
