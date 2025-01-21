@@ -1,24 +1,26 @@
-from ollama import chat  # type: ignore
-from ollama import ChatResponse  # type: ignore
-
-
-MODEL = "deepseek-r1:1.5b"
+import aisuite as ai  # type: ignore
 
 
 def main():
+    client = ai.Client()
+
+    model = "ollama:deepseek-r1:1.5b"
+
     content = "Hello, how are you?"
 
-    response: ChatResponse = chat(
-        model=MODEL,
-        messages=[
-            {
-                "role": "user",
-                "content": content,
-            },
-        ],
+    messages = [
+        {
+            "role": "user",
+            "content": content,
+        },
+    ]
+
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
     )
 
-    print(response.message.content)
+    print(response.choices[0].message.content)
 
 
 if __name__ == "__main__":

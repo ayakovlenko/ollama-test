@@ -9,10 +9,10 @@ Start Ollama:
 ollama serve
 ```
 
-Run model:
+Pull the model:
 
 ```sh
-ollama run deepseek-r1:1.5b
+ollama pull deepseek-r1:1.5b
 ```
 
 Run Python script:
